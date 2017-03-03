@@ -87,10 +87,14 @@ int main ()
 			pos++;
 		}
 	}
+	cout << "Solving the following puzzle: " << endl;
 	board.print();
 	cout << endl;
 	if(tileSol(board,0,0))
+	{
+		cout << "Solution: " << endl;
 		board.print();
+	}
 	else
 		cout << "Cannot solve this puzzle, double check your input";
 	cout << endl;
