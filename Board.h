@@ -8,7 +8,7 @@ using namespace std;
 class Board
 {
 	private:
-		vector< vector<Box> > board;//< vector<Box> >(3, vector<Box>(3));
+		vector< vector<Box> > board;
 		vector<int> concatVectors(vector<int> a, vector<int> b);
 	public:
 		Board();
