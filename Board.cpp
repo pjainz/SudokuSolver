@@ -5,33 +5,20 @@
 
 using namespace std;
 
-Board::Board()
+Board::Board()  //constructor
 	: board(3,vector<Box>(3))
-{
-	//board() = new vector< vector<Box> >(3, vector<Box>(3));
+{}
 
-	//board = new vector<vector<Box>(3) >(3);
-}
+Board::~Board() {} // destructor
 
-Board::~Board() {
-}
-
-void printVec(vector<int> x)
-{
-	for(int i=0; i<(int)x.size(); i++)
-	{
-		cout<<x[i];
-	}
-}
-
-void Board::writeNum(int num, int pos)
+void Board::writeNum(int num, int pos) //used to fill the original board
 {
 	int row = pos/9;
 	int col = pos%9;
 	writeNum(num,row,col);
 }
 
-void Board::writeNum(int num, int row, int col)
+void Board::writeNum(int num, int row, int col) //used to fill guesses into the empty cells
 {
 	int boardRow = row/3;
 	int boardCol = col/3;
@@ -41,7 +28,7 @@ void Board::writeNum(int num, int row, int col)
 	board[boardRow][boardCol].writeNum(num,boxRow,boxCol);
 }
 
-int Board::getNum(int row, int col)
+int Board::getNum(int row, int col) //returns number in specific cell
 {
 	int boardRow = row/3;
 	int boardCol = col/3;
@@ -51,7 +38,7 @@ int Board::getNum(int row, int col)
 	return board[boardRow][boardCol].getNum(boxRow,boxCol);
 }
 
-void Board::print()
+void Board::print() //prints the whole board
 {
 	for(int k = 0; k<3; k++)
 	{
@@ -66,7 +53,7 @@ void Board::print()
 	}
 }
 
-vector<int> Board::concatVectors(vector<int> a, vector<int> b)
+vector<int> Board::concatVectors(vector<int> a, vector<int> b) //combines the vectors without changing the final vectors size
 {
 	vector<int>returnVector = a;
 	for(int i = 0; i<(int)b.size(); i++)
@@ -78,7 +65,8 @@ vector<int> Board::concatVectors(vector<int> a, vector<int> b)
 	return returnVector;
 }
 
-vector<int> Board::getElligable(int rowNum, int colNum){
+vector<int> Board::getElligable(int rowNum, int colNum) // gets the elligable numbers for a certain empty cell
+{
 	vector<int> boxBadNums(9,0);
 	vector<int> rowBadNums(9,0);
 	vector<int> colBadNums(9,0);
